@@ -1,0 +1,62 @@
+# 2- Criar um código que registre as notas de alunos e calcular a média da turma.
+# Objetivo: Coletar notas de forma dinâmica e calcular a média aritmética total.
+
+import sys
+
+def calcular_media_turma():
+    """
+    Registra notas de alunos e calcula a média final da turma.
+    O programa encerra a entrada de dados quando o usuário digita 'fim'.
+    """
+    notas = []
+    
+    print("--- Calculadora de Média da Turma ---")
+    print("Digite 'fim' ou 0 (zero) para finalizar a inserção de notas.")
+
+    while True:
+        try:
+            entrada = input(f"Digite a nota do aluno #{len(notas) + 1}: ")
+            
+            # Condição de saída
+            if entrada.lower() == 'fim':
+                break
+            
+            nota = float(entrada)
+            
+            # Usando 0 como um valor para encerrar, mas garantindo que notas válidas sejam positivas
+            if nota < 0:
+                print("Nota inválida. A nota deve ser positiva.")
+                continue
+
+            if nota == 0 and len(notas) > 0:
+                 break
+
+            if nota > 10:
+                print("Nota inválida. A nota máxima é 10.")
+                continue
+            
+            notas.append(nota)
+        
+        except ValueError:
+            print("Entrada inválida. Digite um número para a nota ou 'fim'.")
+            continue
+
+    # --- Análise dos Resultados ---
+    
+    total_alunos = len(notas)
+    print("-" * 30)
+
+    if total_alunos == 0:
+        print("Nenhuma nota foi registrada.")
+        return
+
+    soma_notas = sum(notas)
+    media_turma = soma_notas / total_alunos
+    
+    print(f"Total de Alunos Registrados: {total_alunos}")
+    print(f"Soma Total das Notas: {soma_notas:.2f}")
+    print(f"Média Final da Turma: {media_turma:.2f}")
+    print("-" * 30)
+    
+if __name__ == "__main__":
+    calcular_media_turma()
