@@ -1,0 +1,8 @@
+Atividades Desenvolvidas
+
+| Arquivo | Conceito Principal | Descrição da Solução |
+| :--- | :--- | :--- |
+| `1_calculadora_basica.py` | **Funções e Tratamento de Erros** | Implementa uma calculadora que recebe dois números e uma operação (+, -, *, /) dentro de uma função, com lógica para evitar a divisão por zero. |
+| `2_media_turma.py` | **Laços de Repetição (`while`) e Listas** | Permite registrar dinamicamente notas de múltiplos alunos até que o usuário insira um comando de parada ('fim' ou 0), e calcula a média final da turma. |
+| `3_verificador_senha.py` | **Validação de Strings e Lógica Booleana** | Verifica se uma senha atende a critérios de segurança (mínimo 8 caracteres e presença de número) usando iteração sobre a string e retorna um feedback detalhado. |
+| `4_classificador_par_impar.py` | **Módulo (%) e Contabilização Dinâmica** | Analisa números inseridos em sequência pelo usuário, classifica cada um como par ou ímpar (usando o operador módulo `%`) e exibe a contagem total de cada categoria. |
