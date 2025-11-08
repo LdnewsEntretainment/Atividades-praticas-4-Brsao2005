@@ -1,0 +1,47 @@
+# 1- Criar um código que faça uma calculadora que tenha as operações básicas (+, -, *, /).
+# Objetivo: Implementar uma calculadora que realiza operações básicas através de uma função.
+
+import sys
+
+def calcular(num1, num2, operacao):
+    """
+    Realiza a operação matemática básica entre dois números.
+    Retorna o resultado ou None se a operação for inválida ou divisão por zero.
+    """
+    if operacao == '+':
+        return num1 + num2
+    elif operacao == '-':
+        return num1 - num2
+    elif operacao == '*':
+        return num1 * num2
+    elif operacao == '/':
+        if num2 != 0:
+            return num1 / num2
+        else:
+            return "Erro: Divisão por zero não é permitida."
+    else:
+        return "Erro: Operação inválida. Use +, -, * ou /."
+
+# --- Interface com o Usuário ---
+
+print("--- Calculadora Simples (+, -, *, /) ---")
+
+try:
+    # Solicita os números e a operação
+    numero1 = float(input("Digite o primeiro número: "))
+    operacao = input("Digite a operação (+, -, * ou /): ")
+    numero2 = float(input("Digite o segundo número: "))
+except ValueError:
+    print("Erro: Digite apenas números válidos para os operandos.")
+    sys.exit()
+
+# Executa o cálculo
+resultado = calcular(numero1, numero2, operacao)
+
+# Exibe o resultado
+print("-" * 35)
+if isinstance(resultado, (int, float)):
+    print(f"Resultado de {numero1} {operacao} {numero2} = {resultado:.2f}")
+else:
+    print(resultado)  # Exibe a mensagem de erro
+print("-" * 35)
