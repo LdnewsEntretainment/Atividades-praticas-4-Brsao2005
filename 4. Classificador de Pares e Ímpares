@@ -1,0 +1,55 @@
+# 4- Criar um código que serve para analisar números digitados pelo usuário,
+# classificando-os como pares ou ímpares e contabilizando quantos de cada tipo foram inseridos.
+
+import sys
+
+def analisar_numeros():
+    """
+    Coleta números do usuário e conta quantos são pares e ímpares.
+    O programa encerra a entrada quando o usuário digita 'fim' ou um valor não numérico.
+    """
+    contagem_par = 0
+    contagem_impar = 0
+    total_analisados = 0
+    
+    print("--- Analisador de Pares e Ímpares ---")
+    print("Digite 'fim' para encerrar a análise.")
+
+    while True:
+        entrada = input(f"Digite um número inteiro ({total_analisados + 1}º): ")
+        
+        # Condição de saída
+        if entrada.lower() == 'fim':
+            break
+
+        try:
+            numero = int(entrada)
+            total_analisados += 1
+            
+            # Lógica de classificação (Módulo: resto da divisão por 2)
+            if numero % 2 == 0:
+                print(f"-> {numero} é PAR.")
+                contagem_par += 1
+            else:
+                print(f"-> {numero} é ÍMPAR.")
+                contagem_impar += 1
+                
+        except ValueError:
+            if entrada.strip() != "": # Ignora enter vazio, mas avisa sobre outros erros
+                print("Entrada inválida. Digite um número inteiro ou 'fim'.")
+            continue
+
+    # --- Exibição dos Resultados Finais ---
+    
+    print("-" * 35)
+    print(f"Total de Números Analisados: {total_analisados}")
+    
+    if total_analisados > 0:
+        print(f"Contagem de Pares: {contagem_par}")
+        print(f"Contagem de Ímpares: {contagem_impar}")
+    else:
+        print("Nenhum número válido foi inserido para análise.")
+    print("-" * 35)
+
+if __name__ == "__main__":
+    analisar_numeros()
