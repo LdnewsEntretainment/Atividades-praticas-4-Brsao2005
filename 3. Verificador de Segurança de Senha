@@ -1,0 +1,56 @@
+# 3- Criar um código que serve para verificar se uma senha digitada pelo usuário
+# atende a critérios básicos de segurança.
+# Critérios: a) Pelo menos 8 caracteres; b) Pelo menos um número.
+
+def verificar_senha(senha):
+    """Verifica se a senha atende aos critérios de segurança."""
+    
+    # a) Critério de comprimento
+    tem_oito_caracteres = len(senha) >= 8
+    
+    # b) Critério de conter um número
+    tem_numero = False
+    for caractere in senha:
+        if caractere.isdigit():
+            tem_numero = True
+            break # Encerra o loop assim que um número for encontrado
+
+    # Lista para armazenar o feedback
+    feedback = []
+    
+    if not tem_oito_caracteres:
+        feedback.append("❌ Falhou: A senha deve ter pelo menos 8 caracteres.")
+    else:
+        feedback.append("✅ Sucesso: A senha tem 8 ou mais caracteres.")
+        
+    if not tem_numero:
+        feedback.append("❌ Falhou: A senha deve conter pelo menos um número.")
+    else:
+        feedback.append("✅ Sucesso: A senha contém pelo menos um número.")
+
+    # Determinação do resultado final
+    senha_valida = tem_oito_caracteres and tem_numero
+    
+    return senha_valida, feedback
+
+# --- Interface com o Usuário ---
+
+print("--- Verificador de Segurança de Senha ---")
+print("Requisitos: 1. Mínimo 8 caracteres. 2. Pelo menos um número.")
+
+senha_usuario = input("Digite a senha para verificação: ")
+
+# Executa a verificação
+valida, detalhes = verificar_senha(senha_usuario)
+
+# Exibe o resultado e o feedback
+print("-" * 30)
+for linha in detalhes:
+    print(linha)
+    
+print("-" * 30)
+if valida:
+    print("STATUS FINAL: ✅ A senha atende a todos os requisitos básicos de segurança.")
+else:
+    print("STATUS FINAL: ❌ A senha NÃO atende aos requisitos mínimos de segurança.")
+print("-" * 30)
